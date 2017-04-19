@@ -21,6 +21,7 @@ namespace GTL_II.Controllers
         public string Get(int id)
         {
             return "value";
+            //test
         }
 
         // POST api/values
