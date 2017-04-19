@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GTL_II.Controllers
+namespace GTLII.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller

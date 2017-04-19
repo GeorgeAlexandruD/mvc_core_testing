@@ -6,8 +6,8 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>b4590392-fe0b-4bed-8ae3-84a7dffa208a</ProjectGuid>
-    <RootNamespace>GTL_II</RootNamespace>
+    <ProjectGuid>f136b5c9-c074-4361-8d19-f11755dc5974</ProjectGuid>
+    <RootNamespace>GTLII</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
