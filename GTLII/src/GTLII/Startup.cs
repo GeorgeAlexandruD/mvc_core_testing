@@ -24,7 +24,7 @@ namespace GTLII
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
                 builder.AddApplicationInsightsSettings(developerMode: true);
             }
-
+            //xml add
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }

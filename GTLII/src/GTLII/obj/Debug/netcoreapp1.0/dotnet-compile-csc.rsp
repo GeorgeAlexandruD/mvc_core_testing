@@ -173,4 +173,5 @@
 -resource:"D:\top up\SemProjectII\GTLII\src\GTLII\obj\Debug\netcoreapp1.0\GTLIIdotnet-compile.deps.json",GTLII.deps.json
 "D:\top up\SemProjectII\GTLII\src\GTLII\Program.cs"
 "D:\top up\SemProjectII\GTLII\src\GTLII\Startup.cs"
+"D:\top up\SemProjectII\GTLII\src\GTLII\Controllers\BookController.cs"
 "D:\top up\SemProjectII\GTLII\src\GTLII\Controllers\ValuesController.cs"

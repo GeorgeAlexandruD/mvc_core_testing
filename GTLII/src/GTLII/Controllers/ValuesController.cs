@@ -11,9 +11,13 @@ namespace GTLII.Controllers
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            string[] a = new string[] { "value1", "value2" };
+            if (a == null)
+                return Ok(a);
+            else
+                return BadRequest();
         }
 
         // GET api/values/5
