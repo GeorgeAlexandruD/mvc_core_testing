@@ -35,14 +35,24 @@ namespace GTLII.Services
                 Name = "Name3"
 
             };
+            Book book4 = new Book()
+            {
+                Id = 4,
+                ISBN = "oipiojlkoh",
+                Name = "star wars"
 
-          
+            };
+
             books.Add(book1);
             books.Add(book2);
             books.Add(book3);
+            books.Add(book4);
         }
-        public IEnumerable<Book> GetBooks()
+        public IEnumerable<Book> GetBooks(string name)
         {
+            if(name!="")
+                return books.Where(b => b.Name.ToLower().Contains(name.ToLower())).ToList();
+            else
             return books.ToList();
         }
 
@@ -51,5 +61,6 @@ namespace GTLII.Services
             return books.Find(b => b.Id == id);
            // books.
         }
+       
     }
 }

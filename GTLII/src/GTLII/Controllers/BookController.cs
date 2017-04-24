@@ -23,13 +23,17 @@ namespace GTLII.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetBooks()
+        public IActionResult GetBooks( string name="")
         {
             //repository
 
             List<BookVM> finalResults = new List<BookVM>();
-            var results = _repo.GetBooks();
-            foreach(var r in results)
+            var results = _repo.GetBooks(name);
+            if (results == null)
+            {
+                return NotFound();
+            }
+            foreach (var r in results)
             {
                 BookVM b = new BookVM()
                 {
@@ -39,21 +43,26 @@ namespace GTLII.Controllers
                 };
                 finalResults.Add(b);
             }
-            if (finalResults == null)
-                return NotFound();
-            else
+          
                 return Ok(finalResults);
 
         }
+ 
         [HttpGet("{id}")]
         public IActionResult GetBooks(int id)
         {
-            a = new string[] { "value1", "value2" };
-            var book = a[id];
-            if (book == null)
+            var result = _repo.GetBook(id);
+            if (result == null)
+            {
                 return NotFound();
-            else
-                return Ok(book);
+            }
+            BookVM b = new BookVM()
+            {
+                Id = result.Id,
+                ISBN = result.ISBN,
+                Name = result.Name
+            };
+                return Ok(b);
 
         }
     }

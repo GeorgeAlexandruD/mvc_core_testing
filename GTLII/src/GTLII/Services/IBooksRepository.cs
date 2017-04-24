@@ -8,6 +8,8 @@ namespace GTLII.Services
 {
     public  interface IBooksRepository
     {
-        IEnumerable<Book> GetBooks();
+        IEnumerable<Book> GetBooks(string name);
+        Book GetBook(int id);
+    
     }
 }
