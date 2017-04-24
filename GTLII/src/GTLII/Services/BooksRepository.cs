@@ -49,6 +49,7 @@ namespace GTLII.Services
         public Book GetBook(int id)
         {
             return books.Find(b => b.Id == id);
+           // books.
         }
     }
 }
