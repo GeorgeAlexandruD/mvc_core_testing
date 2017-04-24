@@ -1,12 +1,13 @@
-﻿using System;
+﻿using GTLII.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace GTLII.Services
 {
-    interface IBooksRepository
+    public  interface IBooksRepository
     {
-        IEnumerable<Type> GetBooks();
+        IEnumerable<Book> GetBooks();
     }
 }

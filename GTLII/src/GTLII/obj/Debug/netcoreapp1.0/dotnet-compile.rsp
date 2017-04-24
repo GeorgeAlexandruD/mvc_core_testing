@@ -21,6 +21,7 @@
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Cryptography.Internal\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Cryptography.Internal.dll
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.DataProtection\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.DataProtection.dll
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.DataProtection.Abstractions\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+--reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Diagnostics\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Diagnostics.dll
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Diagnostics.Abstractions\1.0.0\lib\netstandard1.0\Microsoft.AspNetCore.Diagnostics.Abstractions.dll
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Hosting\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Hosting.dll
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Hosting.Abstractions\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Hosting.Abstractions.dll
@@ -40,6 +41,7 @@
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Mvc.Cors\1.0.1\lib\netstandard1.6\Microsoft.AspNetCore.Mvc.Cors.dll
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Mvc.DataAnnotations\1.0.1\lib\netstandard1.6\Microsoft.AspNetCore.Mvc.DataAnnotations.dll
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Mvc.Formatters.Json\1.0.1\lib\netstandard1.6\Microsoft.AspNetCore.Mvc.Formatters.Json.dll
+--reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Mvc.Formatters.Xml\1.0.1\lib\netstandard1.6\Microsoft.AspNetCore.Mvc.Formatters.Xml.dll
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Mvc.Localization\1.0.1\lib\netstandard1.6\Microsoft.AspNetCore.Mvc.Localization.dll
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Mvc.Razor\1.0.1\lib\netstandard1.6\Microsoft.AspNetCore.Mvc.Razor.dll
 --reference:C:\Users\George\.nuget\packages\Microsoft.AspNetCore.Mvc.Razor.Host\1.0.1\lib\netstandard1.6\Microsoft.AspNetCore.Mvc.Razor.Host.dll
@@ -153,6 +155,7 @@
 --reference:C:\Users\George\.nuget\packages\System.Runtime.Loader\4.0.0\ref\netstandard1.5\System.Runtime.Loader.dll
 --reference:C:\Users\George\.nuget\packages\System.Runtime.Numerics\4.0.1\ref\netstandard1.1\System.Runtime.Numerics.dll
 --reference:C:\Users\George\.nuget\packages\System.Runtime.Serialization.Primitives\4.1.1\ref\netstandard1.3\System.Runtime.Serialization.Primitives.dll
+--reference:C:\Users\George\.nuget\packages\System.Runtime.Serialization.Xml\4.1.1\ref\netstandard1.3\System.Runtime.Serialization.Xml.dll
 --reference:C:\Users\George\.nuget\packages\System.Security.Claims\4.0.1\ref\netstandard1.3\System.Security.Claims.dll
 --reference:C:\Users\George\.nuget\packages\System.Security.Cryptography.Algorithms\4.2.0\ref\netstandard1.6\System.Security.Cryptography.Algorithms.dll
 --reference:C:\Users\George\.nuget\packages\System.Security.Cryptography.Encoding\4.0.0\ref\netstandard1.3\System.Security.Cryptography.Encoding.dll
@@ -174,8 +177,13 @@
 --reference:C:\Users\George\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\George\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\George\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
+--reference:C:\Users\George\.nuget\packages\System.Xml.XmlSerializer\4.0.11\ref\netstandard1.3\System.Xml.XmlSerializer.dll
 --resource:"D:\top up\SemProjectII\GTLII\src\GTLII\obj\Debug\netcoreapp1.0\GTLIIdotnet-compile.deps.json",GTLII.deps.json
 D:\top up\SemProjectII\GTLII\src\GTLII\Program.cs
 D:\top up\SemProjectII\GTLII\src\GTLII\Startup.cs
 D:\top up\SemProjectII\GTLII\src\GTLII\Controllers\BookController.cs
 D:\top up\SemProjectII\GTLII\src\GTLII\Controllers\ValuesController.cs
+D:\top up\SemProjectII\GTLII\src\GTLII\Entities\Book.cs
+D:\top up\SemProjectII\GTLII\src\GTLII\Services\BooksRepository.cs
+D:\top up\SemProjectII\GTLII\src\GTLII\Services\IBooksRepository.cs
+D:\top up\SemProjectII\GTLII\src\GTLII\ViewModels\BookVM.cs

@@ -14,7 +14,7 @@ namespace GTLII.Controllers
         public IActionResult Get()
         {
             string[] a = new string[] { "value1", "value2" };
-            if (a == null)
+            if (a != null)
                 return Ok(a);
             else
                 return BadRequest();

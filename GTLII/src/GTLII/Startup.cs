@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using GTLII.Services;
 
 namespace GTLII
 {
@@ -24,7 +26,7 @@ namespace GTLII
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
                 builder.AddApplicationInsightsSettings(developerMode: true);
             }
-            //xml add
+       
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -34,10 +36,12 @@ namespace GTLII
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
+            services.AddMvc().AddMvcOptions(o =>o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));            // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
+            //dependency injection
+            services.AddScoped<IBooksRepository, BooksRepository>();
 
-            services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -45,6 +49,11 @@ namespace GTLII
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
             app.UseApplicationInsightsRequestTelemetry();
 
