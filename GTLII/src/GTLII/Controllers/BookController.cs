@@ -14,7 +14,7 @@ namespace GTLII.Controllers
     [Route("api/books")]
     public class BookController : Controller
     {
-        public string[] a;
+        
         //dependency is done in service
         private IBooksRepository _repo;
         public BookController(IBooksRepository repo)

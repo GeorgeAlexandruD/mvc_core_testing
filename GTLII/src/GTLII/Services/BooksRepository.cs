@@ -48,7 +48,7 @@ namespace GTLII.Services
             books.Add(book3);
             books.Add(book4);
         }
-        public IEnumerable<Book> GetBooks(string name)
+        public IEnumerable<Book> GetBooks(string name="")
         {
             if(name!="")
                 return books.Where(b => b.Name.ToLower().Contains(name.ToLower())).ToList();
@@ -60,6 +60,10 @@ namespace GTLII.Services
         {
             return books.Find(b => b.Id == id);
            // books.
+        }
+        public bool Works()
+        {
+            return true;
         }
        
     }
