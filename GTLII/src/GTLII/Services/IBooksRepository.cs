@@ -11,6 +11,6 @@ namespace GTLII.Services
         IEnumerable<Book> GetBooks(string name="");
         Book GetBook(int id);
 
-        bool Works();
+       
     }
 }

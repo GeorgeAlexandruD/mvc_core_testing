@@ -1,7 +1,5 @@
-﻿using GTLII.Controllers;
-using GTLII.Entities;
+﻿using GTLII.Entities;
 using GTLII.Services;
-using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -11,10 +9,10 @@ using Xunit;
 
 namespace UnitTest
 {
-    public class BookControllerTest
+    public class RepositoryControllerTest
     {
         Mock<IBooksRepository> repoMock;
-        BookController bc;
+
         [Fact]
         public void GetAllBooks()
         {
@@ -36,16 +34,14 @@ namespace UnitTest
             };
             repoMock = new Mock<IBooksRepository>();
             repoMock.Setup(b => b.GetBooks(It.IsAny<string>())).Returns(booksMock);
+            List<Book> books = repoMock.Object.GetBooks(It.IsAny<string>()).ToList();
 
-            bc = new BookController(repoMock.Object);
-            var actionResult = bc.GetBooks();
-            Assert.IsType<OkObjectResult>(actionResult);
-           // tests for repo :) 
-         //   Assert.Equal(books.Count, 2);
-         //   Assert.Equal(books.Find(b => b.Id == 1).Name, "name");
+
+            Assert.Equal(books.Count, 2);
+            Assert.Equal(books.Find(b => b.Id == 1).Name, "name");
         }
         [Fact]
-        public void GetBookRightId()
+        public void GetBook()
         {
             Book result = new Book()
             {
@@ -53,22 +49,16 @@ namespace UnitTest
                 ISBN = "asd",
                 Name = "name"
             };
-               
+
             repoMock = new Mock<IBooksRepository>();
             repoMock.Setup(b => b.GetBook(1)).Returns(result);
 
-            bc = new BookController(repoMock.Object);
-            var actionResult = bc.GetBook(1);
-            Assert.IsType<OkObjectResult>(actionResult);
-        }
-        [Fact]
-        public void GetBookWrongId()
-        {
-            repoMock = new Mock<IBooksRepository>();
 
-            bc = new BookController(repoMock.Object);
-            var actionResult = bc.GetBook(1);
-            Assert.IsType<NotFoundResult>(actionResult);
+            repoMock.Object.GetBook(1);
+            Assert.Equal(repoMock.Object.GetBook(1).ISBN, "asd");
         }
+
+
+
     }
 }

@@ -49,7 +49,7 @@ namespace GTLII.Controllers
         }
  
         [HttpGet("{id}")]
-        public IActionResult GetBooks(int id)
+        public IActionResult GetBook(int id)
         {
             var result = _repo.GetBook(id);
             if (result == null)
