@@ -1,12 +1,12 @@
---temp-output:D:\top up\SemProjectII\GTLII\src\GTLII\obj\Debug\netcoreapp1.0\
---out:D:\top up\SemProjectII\GTLII\src\GTLII\bin\Debug\netcoreapp1.0\GTLII.dll
---define:DEBUG
+--temp-output:D:\top up\SemProjectII\GTLII\src\GTLII\obj\Release\netcoreapp1.0\
+--out:D:\top up\SemProjectII\GTLII\src\GTLII\bin\Release\netcoreapp1.0\GTLII.dll
+--define:RELEASE
 --define:TRACE
 --define:NETCOREAPP1_0
 --suppress-warning:CS1701
 --suppress-warning:CS1702
 --suppress-warning:CS1705
---optimize:False
+--optimize:True
 --emit-entry-point:True
 --output-name:GTLII
 --file-version:1.0.0.0
@@ -178,16 +178,12 @@
 --reference:C:\Users\George\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\George\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
 --reference:C:\Users\George\.nuget\packages\System.Xml.XmlSerializer\4.0.11\ref\netstandard1.3\System.Xml.XmlSerializer.dll
---resource:"D:\top up\SemProjectII\GTLII\src\GTLII\obj\Debug\netcoreapp1.0\GTLIIdotnet-compile.deps.json",GTLII.deps.json
+--resource:"D:\top up\SemProjectII\GTLII\src\GTLII\obj\Release\netcoreapp1.0\GTLIIdotnet-compile.deps.json",GTLII.deps.json
 D:\top up\SemProjectII\GTLII\src\GTLII\Program.cs
 D:\top up\SemProjectII\GTLII\src\GTLII\Startup.cs
 D:\top up\SemProjectII\GTLII\src\GTLII\Controllers\BookController.cs
-D:\top up\SemProjectII\GTLII\src\GTLII\Controllers\BookCopyController.cs
 D:\top up\SemProjectII\GTLII\src\GTLII\Controllers\ValuesController.cs
 D:\top up\SemProjectII\GTLII\src\GTLII\Entities\Book.cs
-D:\top up\SemProjectII\GTLII\src\GTLII\Entities\BookCopy.cs
 D:\top up\SemProjectII\GTLII\src\GTLII\Services\BooksRepository.cs
 D:\top up\SemProjectII\GTLII\src\GTLII\Services\IBooksRepository.cs
-D:\top up\SemProjectII\GTLII\src\GTLII\ViewModels\BookCopyLoanVM.cs
-D:\top up\SemProjectII\GTLII\src\GTLII\ViewModels\BookCopyVM.cs
 D:\top up\SemProjectII\GTLII\src\GTLII\ViewModels\BookVM.cs

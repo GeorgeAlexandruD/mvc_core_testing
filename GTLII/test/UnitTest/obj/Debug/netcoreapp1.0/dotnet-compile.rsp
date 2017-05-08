@@ -200,6 +200,7 @@
 --reference:C:\Users\George\.nuget\packages\xunit.runner.reporters\2.2.0-beta2-build3300\lib\netstandard1.1\xunit.runner.reporters.dotnet.dll
 --reference:C:\Users\George\.nuget\packages\xunit.runner.utility\2.2.0-beta2-build3300\lib\netstandard1.1\xunit.runner.utility.dotnet.dll
 --reference:D:\top up\SemProjectII\GTLII\src\GTLII\bin\Debug\netcoreapp1.0\GTLII.dll
+D:\top up\SemProjectII\GTLII\test\UnitTest\BookControllerIntegrationTest.cs
 D:\top up\SemProjectII\GTLII\test\UnitTest\BookControllerTest.cs
 D:\top up\SemProjectII\GTLII\test\UnitTest\RepositoryControllerTest.cs
 D:\top up\SemProjectII\GTLII\test\UnitTest\Properties\AssemblyInfo.cs

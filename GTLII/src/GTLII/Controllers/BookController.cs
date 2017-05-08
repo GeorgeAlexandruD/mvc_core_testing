@@ -40,6 +40,7 @@ namespace GTLII.Controllers
                     Id = r.Id,
                     Name= r.Name,
                     ISBN=r.ISBN
+                  
                 };
                 finalResults.Add(b);
             }
@@ -63,6 +64,23 @@ namespace GTLII.Controllers
                 Name = result.Name
             };
                 return Ok(b);
+
+        }
+        [HttpPost("{id}")]
+        public IActionResult GetBook(BookVM book)
+        {
+            //var result = _repo.GetBook(id);
+            //if (result == null)
+            //{
+            //    return NotFound();
+            //}
+            //BookVM b = new BookVM()
+            //{
+            //    Id = result.Id,
+            //    ISBN = result.ISBN,
+            //    Name = result.Name
+            //};
+            return Ok();
 
         }
     }

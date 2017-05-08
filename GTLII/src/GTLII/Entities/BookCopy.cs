@@ -5,14 +5,9 @@ using System.Threading.Tasks;
 
 namespace GTLII.Entities
 {
-    public class Book
+    public class BookCopy
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string ISBN { get; set; }
-        public ICollection<BookCopy> Copies { get; set; }
-
-
-
+        public bool IsAvailable { get; set; }
     }
 }

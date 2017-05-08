@@ -9,7 +9,7 @@ namespace GTLII.Services
 {
     public class BooksRepository : IBooksRepository
     {
-        public List<Book> books;
+        public static List<Book> books;
 
         public BooksRepository()
         {
@@ -18,7 +18,24 @@ namespace GTLII.Services
             {
                 Id = 1,
                 ISBN = "asdasdasdasd",
-                Name = "Name"
+                Name = "Name",
+                Copies = new List<BookCopy>
+                {
+                    new BookCopy
+                    {
+                        Id =1,
+                        IsAvailable = true
+                    },
+                      new BookCopy
+                    {
+                          Id =2,
+                        IsAvailable = true
+                    }
+                }
+
+
+
+
 
             };
             Book book2 = new Book()
@@ -48,14 +65,14 @@ namespace GTLII.Services
             books.Add(book3);
             books.Add(book4);
         }
-        public IEnumerable<Book> GetBooks(string name="")
+        public IEnumerable<Book> GetBooks(string name = "")
         {
             if (books == null)
                 return null;
-            if(name!="")
+            if (name != "")
                 return books.Where(b => b.Name.ToLower().Contains(name.ToLower())).ToList();
             else
-            return books.ToList();
+                return books.ToList();
         }
 
         public Book GetBook(int id)
@@ -63,8 +80,8 @@ namespace GTLII.Services
             if (books == null)
                 return null;
             return books.Find(b => b.Id == id);
-           // books.
+            // books.
         }
-      
+
     }
 }
