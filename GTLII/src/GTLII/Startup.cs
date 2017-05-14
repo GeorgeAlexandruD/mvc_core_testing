@@ -39,7 +39,7 @@ namespace GTLII
             services.AddMvc().AddMvcOptions(o =>o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));            // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
             //dependency injection
-            services.AddScoped<IBooksRepository, BooksRepository>();
+          services.AddScoped<IBooksRepository, BooksRepository>();
 
 
         }

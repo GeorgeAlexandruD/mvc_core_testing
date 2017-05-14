@@ -10,6 +10,8 @@ namespace GTLII.Services
     {
         IEnumerable<Book> GetBooks(string name="");
         Book GetBook(int id);
-        
+        BookCopy GetCopy(int bookId, int id);
+        bool LoanCopy(int bookId, int id);
+   
     }
 }

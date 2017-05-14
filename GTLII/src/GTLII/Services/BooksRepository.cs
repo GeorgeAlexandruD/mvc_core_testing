@@ -9,17 +9,17 @@ namespace GTLII.Services
 {
     public class BooksRepository : IBooksRepository
     {
-        public static List<Book> books;
+        public static List<Book> books= new List<Book>();
 
         public BooksRepository()
         {
-            books = new List<Book>();
-            Book book1 = new Book()
-            {
-                Id = 1,
-                ISBN = "asdasdasdasd",
-                Name = "Name",
-                Copies = new List<BookCopy>
+            if (books.Count() == 0) { 
+                Book book1 = new Book()
+                {
+                    Id = 1,
+                    ISBN = "asdasdasdasd",
+                    Name = "Name",
+                    Copies = new List<BookCopy>
                 {
                     new BookCopy
                     {
@@ -34,36 +34,37 @@ namespace GTLII.Services
                 }
 
 
+                };
+                Book book2 = new Book()
+                {
+                    Id = 2,
+                    ISBN = "dsaddasdd",
+                    Name = "Name2",
+                    Copies = new List<BookCopy> { }
 
+                };
+                Book book3 = new Book()
+                {
+                    Id = 3,
+                    ISBN = "oipiojlkoh",
+                    Name = "Name3",
+                    Copies = new List<BookCopy> { }
 
+                };
+                Book book4 = new Book()
+                {
+                    Id = 4,
+                    ISBN = "oipiojlkoh",
+                    Name = "star wars",
+                    Copies = new List<BookCopy> { }
 
-            };
-            Book book2 = new Book()
-            {
-                Id = 2,
-                ISBN = "dsaddasdd",
-                Name = "Name2"
+                };
 
-            };
-            Book book3 = new Book()
-            {
-                Id = 3,
-                ISBN = "oipiojlkoh",
-                Name = "Name3"
-
-            };
-            Book book4 = new Book()
-            {
-                Id = 4,
-                ISBN = "oipiojlkoh",
-                Name = "star wars"
-
-            };
-
-            books.Add(book1);
-            books.Add(book2);
-            books.Add(book3);
-            books.Add(book4);
+                books.Add(book1);
+                books.Add(book2);
+                books.Add(book3);
+                books.Add(book4);
+            }
         }
         public IEnumerable<Book> GetBooks(string name = "")
         {
@@ -82,6 +83,31 @@ namespace GTLII.Services
             return books.Find(b => b.Id == id);
             // books.
         }
+        public BookCopy GetCopy(int bookId, int id)
+        {
+          BookCopy copy=   books.Find(b => b.Id == bookId).Copies.FirstOrDefault(c => c.Id == id);
+            return copy;
+        }
+        public bool LoanCopy(int bookId, int id)
+        {
+            try{
+                books.Find(b => b.Id == bookId).Copies.FirstOrDefault(c => c.Id == id).IsAvailable = false;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            return true;
+            
+        }
+        //IEnumerable<BookCopy> GetCopiesForBook(int bookId)
+        //{
+        //    return books
+        //}
+        //BookCopy GetCopyForBook(int bookId, int id)
+        //{
+
+        //}
 
     }
 }

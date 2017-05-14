@@ -66,9 +66,9 @@ namespace GTLII.Controllers
                 return Ok(b);
 
         }
-        [HttpPost("{id}")]
-        public IActionResult GetBook(BookVM book)
-        {
+        //[HttpPost("{id}")]
+        //public IActionResult GetBook(BookVM book)
+        //{
             //var result = _repo.GetBook(id);
             //if (result == null)
             //{
@@ -80,8 +80,8 @@ namespace GTLII.Controllers
             //    ISBN = result.ISBN,
             //    Name = result.Name
             //};
-            return Ok();
+           // return Ok();
 
-        }
+       // }
     }
 }

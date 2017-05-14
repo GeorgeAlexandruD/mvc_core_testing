@@ -25,7 +25,7 @@ namespace GTLII.Controllers
         public IActionResult GetCopies(int bookId)
         {
             var book = _repo.GetBook(bookId);
-            if(book== null)
+            if (book == null)
             {
                 return NotFound();
             }
@@ -43,7 +43,7 @@ namespace GTLII.Controllers
             //provisory 
             if (book.Copies == null)
                 return NotFound();
-            var copy = book.Copies.FirstOrDefault(c => c.Id == id);
+            var copy = _repo.GetCopy(bookId, id);
             if (copy == null)
                 return NotFound();
             else
@@ -52,12 +52,13 @@ namespace GTLII.Controllers
         [HttpPatch("{bookId}/copies/{id}")]
         public IActionResult LoanBook(int bookId, int id, [FromBody] JsonPatchDocument<BookCopyLoanVM> patchDoc)
         {
+            //make method in the repo
             /*[{
   "op": "replace",
   "path": "/isAvailable",
   "value": "false"
 }]*/
-            if(patchDoc == null)
+            if (patchDoc == null)
             {
                 return BadRequest();
             }
@@ -66,22 +67,21 @@ namespace GTLII.Controllers
             {
                 return NotFound();
             }
-            //provisory 
-            if (book.Copies == null)
-                return NotFound();
-            var copy = _repo.GetBook(bookId).Copies.FirstOrDefault(c => c.Id == id);
+           
+            var copy = _repo.GetCopy(bookId, id);
             if (copy == null)
                 return NotFound();
             var copyPatch = new BookCopyLoanVM()
             {
-
                 IsAvailable = copy.IsAvailable
             };
             patchDoc.ApplyTo(copyPatch, ModelState);
             if (!ModelState.IsValid)
                 return BadRequest();
-            copy.IsAvailable = copyPatch.IsAvailable;
-            return Ok(copy);// change to no content
+             bool result =_repo.LoanCopy(bookId,id);
+            if (result == false)
+                return BadRequest();
+            return NoContent();// change to no content
         }
 
     }
