@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GTLII.Entities;
 
 namespace GTLII.Controllers
 {
@@ -15,7 +16,7 @@ namespace GTLII.Controllers
     {
 
         //dependency is done in service
-        private IBooksRepository _repo;
+        private readonly IBooksRepository _repo;
         public BookCopyController(IBooksRepository repo)
         {
             _repo = repo;
@@ -26,38 +27,36 @@ namespace GTLII.Controllers
         {
             var book = _repo.GetBook(bookId);
             if (book == null)
-            {
                 return NotFound();
-            }
-            return Ok(book.Copies);
+            var copies = book.Copies ?? new List<BookCopy>();
+            return Ok(copies.Select(copy => new BookCopyVM(copy)));
 
         }
         [HttpGet("{bookId}/copies/{id}")]
         public IActionResult GetCopy(int bookId, int id)
         {
-            var book = _repo.GetBook(bookId);
+/*            var book = _repo.GetBook(bookId);
             if (book == null)
             {
                 return NotFound();
             }
             //provisory 
             if (book.Copies == null)
-                return NotFound();
+                return NotFound();*/
             var copy = _repo.GetCopy(bookId, id);
             if (copy == null)
                 return NotFound();
-            else
-                return Ok(copy);
+            var copyVm = new BookCopyVM
+            {
+                Id = copy.Id,
+                IsAvailable = copy.IsAvailable
+            };
+            return Ok(copyVm);
         }
         [HttpPatch("{bookId}/copies/{id}")]
         public IActionResult LoanBook(int bookId, int id, [FromBody] JsonPatchDocument<BookCopyLoanVM> patchDoc)
         {
-            //make method in the repo
-            /*[{
-  "op": "replace",
-  "path": "/isAvailable",
-  "value": "false"
-}]*/
+
             if (patchDoc == null)
             {
                 return BadRequest();

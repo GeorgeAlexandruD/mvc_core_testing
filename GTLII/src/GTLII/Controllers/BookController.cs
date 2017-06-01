@@ -29,6 +29,7 @@ namespace GTLII.Controllers
 
             List<BookVM> finalResults = new List<BookVM>();
             var results = _repo.GetBooks(name);
+            
             if (results == null)
             {
                 return NotFound();

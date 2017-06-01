@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GTLII.ViewModels;
 using Xunit;
 
 namespace UnitTest
@@ -14,10 +15,14 @@ namespace UnitTest
     public class BookControllerTest
     {
         Mock<IBooksRepository> repoMock;
+
         BookController bc;
+        
+
         [Fact]
         public void GetAllBooks()
         {
+            //Arrange
             List<Book> booksMock = new List<Book>()
             {
                 new Book()
@@ -38,16 +43,19 @@ namespace UnitTest
             repoMock.Setup(b => b.GetBooks(It.IsAny<string>())).Returns(booksMock);
 
             bc = new BookController(repoMock.Object);
+
+            //Act
             var actionResult = bc.GetBooks();
+
+            //Assert
             Assert.IsType<OkObjectResult>(actionResult);
-           // tests for repo :) 
-         //   Assert.Equal(books.Count, 2);
-         //   Assert.Equal(books.Find(b => b.Id == 1).Name, "name");
+
         }
         [Fact]
         public void GetBookRightId()
         {
-            Book result = new Book()
+            //Arrange
+            Book mockResult = new Book()
             {
                 Id = 1,
                 ISBN = "asd",
@@ -55,19 +63,97 @@ namespace UnitTest
             };
                
             repoMock = new Mock<IBooksRepository>();
-            repoMock.Setup(b => b.GetBook(1)).Returns(result);
+            repoMock.Setup(b => b.GetBook(1)).Returns(mockResult);
 
             bc = new BookController(repoMock.Object);
+
+            //Act
             var actionResult = bc.GetBook(1);
+
+            //Assert
             Assert.IsType<OkObjectResult>(actionResult);
+
         }
+
+        [Fact]
+        public void GetBookDataTypeForRightId()
+        {
+            //Arrange
+            Book mockResult = new Book()
+            {
+                Id = 1,
+                ISBN = "asd",
+                Name = "name"
+            };
+
+            repoMock = new Mock<IBooksRepository>();
+            repoMock.Setup(b => b.GetBook(1)).Returns(mockResult);
+
+            bc = new BookController(repoMock.Object);
+
+            //Act
+            var actionResult = bc.GetBook(1);
+            var okObjectResult = (OkObjectResult) actionResult;
+
+            //Assert
+            Assert.IsType<BookVM>(okObjectResult.Value);
+        }
+
+        [Fact]
+        public void GetBookDataForRightId()
+        {
+            //Arrange
+            Book mockResult = new Book()
+            {
+                Id = 1,
+                ISBN = "asd",
+                Name = "name"
+            };
+
+            repoMock = new Mock<IBooksRepository>();
+            repoMock.Setup(b => b.GetBook(1)).Returns(mockResult);
+
+            bc = new BookController(repoMock.Object);
+
+            //Act
+            var actionResult = bc.GetBook(1);
+            var okObjectResult = (OkObjectResult)actionResult;
+            var result = (BookVM) okObjectResult.Value;
+
+            //Assert
+            Assert.Equal(result.ISBN, mockResult.ISBN);
+            Assert.Equal(result.Id, mockResult.Id);
+            Assert.Equal(result.Name, mockResult.Name);
+        }
+
         [Fact]
         public void GetBookWrongId()
         {
+            //Arrange
             repoMock = new Mock<IBooksRepository>();
 
             bc = new BookController(repoMock.Object);
+
+            //Act
             var actionResult = bc.GetBook(1);
+
+            //Assert
+            Assert.IsType<NotFoundResult>(actionResult);
+        }
+
+        [Fact]
+        public void CheckRepositoryDataNotFound()
+        {
+            //Arrange
+            repoMock = new Mock<IBooksRepository>();
+            repoMock.Setup(mock => mock.GetBooks(It.IsAny<string>())).Returns(null as IEnumerable<Book>);
+
+            bc = new BookController(repoMock.Object);
+
+            //Act 
+            var actionResult = bc.GetBooks("Some magnificent name");
+
+            //Assert
             Assert.IsType<NotFoundResult>(actionResult);
         }
     }

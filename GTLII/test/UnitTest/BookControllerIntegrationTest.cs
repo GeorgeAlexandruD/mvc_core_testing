@@ -17,9 +17,14 @@ namespace UnitTest
         [Fact]
         public void GetAllBooks( )
         {
+            //Arrange
             BooksRepository repo = new BooksRepository();
             BookController bc = new BookController(repo);
+
+            //Act
             var actionResult = bc.GetBooks();
+
+            //Assert
             Assert.IsType<OkObjectResult>(actionResult);
         }
     }

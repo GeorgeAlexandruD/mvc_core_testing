@@ -13,58 +13,61 @@ namespace GTLII.Services
 
         public BooksRepository()
         {
-            if (books.Count() == 0) { 
-                Book book1 = new Book()
-                {
-                    Id = 1,
-                    ISBN = "asdasdasdasd",
-                    Name = "Name",
-                    Copies = new List<BookCopy>
+            if (books.Any())
+                return;
+            var book1 = new Book()
+            {
+                Id = 1,
+                ISBN = "asdasdasdasd",
+                Name = "Name",
+                Copies = new List<BookCopy>
                 {
                     new BookCopy
                     {
                         Id =1,
                         IsAvailable = true
                     },
-                      new BookCopy
+                    new BookCopy
                     {
-                          Id =2,
+                        Id =2,
                         IsAvailable = true
                     }
                 }
 
 
-                };
-                Book book2 = new Book()
-                {
-                    Id = 2,
-                    ISBN = "dsaddasdd",
-                    Name = "Name2",
-                    Copies = new List<BookCopy> { }
+            };
 
-                };
-                Book book3 = new Book()
-                {
-                    Id = 3,
-                    ISBN = "oipiojlkoh",
-                    Name = "Name3",
-                    Copies = new List<BookCopy> { }
+            var book2 = new Book()
+            {
+                Id = 2,
+                ISBN = "dsaddasdd",
+                Name = "Name2",
+                Copies = new List<BookCopy> { }
 
-                };
-                Book book4 = new Book()
-                {
-                    Id = 4,
-                    ISBN = "oipiojlkoh",
-                    Name = "star wars",
-                    Copies = new List<BookCopy> { }
+            };
 
-                };
+            var book3 = new Book()
+            {
+                Id = 3,
+                ISBN = "oipiojlkoh",
+                Name = "Name3",
+                Copies = new List<BookCopy> { }
 
-                books.Add(book1);
-                books.Add(book2);
-                books.Add(book3);
-                books.Add(book4);
-            }
+            };
+
+            var book4 = new Book()
+            {
+                Id = 4,
+                ISBN = "oipiojlkoh",
+                Name = "star wars",
+                Copies = new List<BookCopy> { }
+
+            };
+
+            books.Add(book1);
+            books.Add(book2);
+            books.Add(book3);
+            books.Add(book4);
         }
         public IEnumerable<Book> GetBooks(string name = "")
         {
