@@ -83,5 +83,45 @@ namespace GTLII.Controllers
             return NoContent();// change to no content
         }
 
+        [HttpPatch("{bookId}/copies2/{id}")]
+        public IActionResult LoanBook2(int bookId, int id, [FromBody] JsonPatchDocument<BookCopyLoanVM> patchDoc)
+        {
+
+            if (patchDoc == null)
+            {
+                return BadRequest();
+            }
+            var book = _repo.GetBook(bookId);
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            var copy = _repo.GetCopy(bookId, id);
+            if (copy == null)
+                return NotFound();
+            var copyPatch = new BookCopyLoanVM()
+            {
+                IsAvailable = copy.IsAvailable
+            };
+            var beforePatched = new BookCopyLoanVM
+            {
+                IsAvailable = copy.IsAvailable
+            };
+            patchDoc.ApplyTo(copyPatch, ModelState);
+            if (!ModelState.IsValid)
+                return BadRequest();
+            bool result = _repo.LoanCopy(bookId, id);
+            if (result == false)
+                return BadRequest();
+            var model = new
+            {
+                original = beforePatched,
+                patched = copyPatch
+            };
+
+            return Ok(model);
+        }
+
     }
 }

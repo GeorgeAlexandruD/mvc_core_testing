@@ -156,5 +156,62 @@ namespace UnitTest
             //Assert
             Assert.IsType<NotFoundResult>(actionResult);
         }
+        [Fact]
+        public void GetBooksByTitleNoBooks()
+        {
+            //Arrange
+            var mockResult = new List<Book>();
+
+            var repoMock = new Mock<IBooksRepository>();
+            repoMock.Setup(b => b.GetBooks("Little Mermeid")).Returns(mockResult);
+            var bcc = new BookController(repoMock.Object);
+
+            //Act 
+            var actionResult = bcc.GetBooksByTitle("Little Mermeid");
+
+            //Assert 
+            Assert.IsType<OkObjectResult>(actionResult);
+        }
+        [Fact]
+        public void GetBooksByTitleAreBooks()
+        {
+            //Arrange
+            var mockResult = new List<Book>
+            {
+                new Book()
+                {
+                    Id = 1,
+                    ISBN = "asd",
+                    Name = "Little Mermeid",
+                    Copies = new List<BookCopy> {new BookCopy {Id = 1, IsAvailable = false}}
+                }
+            };
+
+            var repoMock = new Mock<IBooksRepository>();
+            repoMock.Setup(b => b.GetBooks("Little Mermeid")).Returns(mockResult);
+            var bcc = new BookController(repoMock.Object);
+
+            //Act 
+            var actionResult = bcc.GetBooksByTitle("Little Mermeid");
+
+            //Assert 
+            Assert.IsType<OkObjectResult>(actionResult);
+        }
+        [Fact]
+        public void GetBooksByTitleNull()
+        {
+            //Arrange
+            IEnumerable<Book> mockResult = null;
+
+            var repoMock = new Mock<IBooksRepository>();
+            repoMock.Setup(b => b.GetBooks("Little Mermeid")).Returns(mockResult);
+            var bcc = new BookController(repoMock.Object);
+
+            //Act 
+            var actionResult = bcc.GetBooksByTitle("Little Mermeid");
+
+            //Assert 
+            Assert.IsType<NotFoundResult>(actionResult);
+        }
     }
 }

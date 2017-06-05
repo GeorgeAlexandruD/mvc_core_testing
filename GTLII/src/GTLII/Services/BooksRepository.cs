@@ -103,6 +103,21 @@ namespace GTLII.Services
             return true;
             
         }
+        public bool CreateBook(string name, string isbn)
+        {
+            if(name == null)
+            {
+                return false;
+            }
+            var trimedName = name.Trim();
+            if (trimedName.Length > 32 || trimedName.Length < 1)
+            {
+                return false;
+            }
+            if (isbn == null) return true;
+            var trimedIsbn = isbn.Trim();
+            return trimedIsbn.Length == 10 || trimedIsbn.Length == 13;
+        }
         //IEnumerable<BookCopy> GetCopiesForBook(int bookId)
         //{
         //    return books
